@@ -39,6 +39,9 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "phpmd/phpmd": "*",
+        "phpstan/phpstan": "*",
+        "squizlabs/php_codesniffer": "*",
         "symfony/maker-bundle": "^1.50"
     },
     "config": {

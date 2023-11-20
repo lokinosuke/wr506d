@@ -1,13 +1,11 @@
 <?php
 
-// src/DataFixtures/AppFixtures.php
-
 namespace App\DataFixtures;
 
-use App\Entity\Actor;
-use App\Entity\User; // Assuming you have a User entity
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\Actor;
+use App\Entity\Movie;
 use Faker;
 
 class AppFixtures extends Fixture
@@ -17,16 +15,43 @@ class AppFixtures extends Fixture
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Person($faker));
 
-        $fullName = $faker->actor; // Assuming $faker->actor returns a full name
-        $nameParts = explode(' ', $fullName);
+        $actors = $faker->actors($gender = null, $count = 190, $duplicates =false);
+        $createdActors = [];
+        foreach ($actors as $item) {
 
-        $actor = new Actor();
-        $actor->setLastname($nameParts[1] ?? ''); // Assuming the last name is the second part
-        $actor->setFirstname($nameParts[0] ?? ''); // Assuming the first name is the first part
-        $actor->setDob(new \DateTime('1980-01-01')); // Assuming setDob is a method in your Actor entity
-        $actor->setCreatedAt(new \DateTimeImmutable());
+            $fullname = $item;
+            $fullnameExploded = explode(" ", $fullname);
 
-        $manager->persist($actor);
+            $firstname = $fullnameExploded[0];
+            $lastname = $fullnameExploded[1];
+
+            $actor = new Actor();
+            $actor->setlastname($lastname);
+            $actor->setfirstname($firstname);
+            $actor->setDob($faker->dateTimeThisCentury());
+            $actor->setCreatedAt(new \DateTimeImmutable());
+
+            $createdActors[] = $actor;
+
+            $manager->persist($actor);
+        }
+
+        $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
+        $movies = $faker->movies(2);
+
+        foreach ($movies as $item) {
+
+            $movie = new Movie();
+            $movie->setTitle($item);
+
+            shuffle($createdActors);
+            $createdActorsSliced = array_slice($createdActors, 0, 5);
+            foreach ($createdActorsSliced as $actor) {
+                $movie->addActor($actor);
+            }
+
+            $manager->persist($movie);
+        }
         $manager->flush();
     }
 }
