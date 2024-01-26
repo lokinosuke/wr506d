@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Afficher Date et Heure</title>
+</head>
+<style>
+body {
+    height: 97vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<body>
+<h1>{{ 'now'|format_datetime('full', locale='fr',timezone='Europe/Paris') }}</h1>
+</body>
+</html>
