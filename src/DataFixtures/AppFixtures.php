@@ -37,7 +37,7 @@ class AppFixtures extends Fixture
         }
 
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
-        $movies = $faker->movies(2);
+        $movies = $faker->movies(100);
 
         foreach ($movies as $item) {
 
