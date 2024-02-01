@@ -5,7 +5,7 @@
 Download Composer and use the composer binary installed on your computer to run these commands:
 
 # you can clone the code repository and install its dependencies
-$ git clone https://github.com/lokinosuke/wr506d.git my_project
+$ git clone https://github.com/lokinosuke/wr506d.git mmi21h01
 ```
 $ cd my_project/
 $ composer install
@@ -20,7 +20,7 @@ There's no need to configure anything before running the application. There are 
 
 Option 1. Download Symfony CLI and run this command:
 ```
-$ cd my_project/
+$ cd mmi21h01/
 $ symfony server:start
 ```
 Then access the application in your browser at the given URL (http://127.0.0.1:8000/ by default).
@@ -29,6 +29,6 @@ Option 2. Use a web server like Nginx or Apache to run the application (read the
 
 On your local machine, you can run this command to use the built-in PHP web server:
 ```
-$ cd my_project/
+$ cd mmi21h01/
 $ php -S localhost:8000 -t public/
 ```
