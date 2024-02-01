@@ -5,7 +5,7 @@
 Download Composer and use the composer binary installed on your computer to run these commands:
 
 # you can clone the code repository and install its dependencies
-$ git clone [https://github.com/thetimverse/wr506d-api-symfony.git](https://github.com/lokinosuke/wr506d.git) my_project
+$ git clone https://github.com/lokinosuke/wr506d.git my_project
 $ cd my_project/
 $ composer install
 # create the database
