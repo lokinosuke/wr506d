@@ -1,7 +1,7 @@
-Symfony Movie App API
-Requirements
-The usual Symfony application requirements.
-Installation
+# Symfony Movie App API
+## Requirements
+- The usual Symfony application requirements.
+## Installation
 Download Composer and use the composer binary installed on your computer to run these commands:
 
 # you can clone the code repository and install its dependencies
